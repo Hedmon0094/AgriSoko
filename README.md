@@ -1,61 +1,144 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🌾 AgriSoko
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A Laravel-powered digital platform to empower small-scale farmers with real-time agricultural information, loans, and market data through USSD, SMS, and M-PESA integrations.
 
-## About Laravel
+![AgriSoko Banner](https://via.placeholder.com/1000x300?text=AgriSoko+%7C+Empowering+Farming+Digitally)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🚀 Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- 📲 **USSD Support** — Market prices, weather, agri-tips, and loan application
+- 💰 **M-PESA STK Push** — Secure mobile money transactions (via Safaricom)
+- ✉️ **SMS Notifications** — Instant feedback via Africa’s Talking
+- 📊 **Admin Dashboard** — Real-time analytics on loan applications
+- 🔒 Secure, scalable, and mobile-first Laravel backend
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 📦 Tech Stack
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+| Layer       | Technology               |
+|------------|---------------------------|
+| Backend     | Laravel (PHP)            |
+| Database    | MySQL                    |
+| USSD & SMS  | Africa's Talking API     |
+| Payments    | Safaricom M-PESA API     |
+| Admin Panel | Laravel Blade / Vue.js   |
+| Server      | Laragon (for Windows)    |
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## 📁 Project Structure
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```
+agrisoko/
+├── app/
+│   └── Http/
+│       └── Controllers/
+│           ├── USSDController.php
+│           ├── SMSController.php
+│           ├── MpesaController.php
+│           └── AdminController.php
+├── routes/
+│   └── api.php
+├── database/
+│   └── migrations/
+├── .env
+└── README.md
+```
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## ⚙️ Setup Instructions (with Laragon)
 
-## Contributing
+### 🖥 Prerequisites
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- [Laragon](https://laragon.org/) (or XAMPP with Composer & PHP 8+)
+- Composer
+- PHP 8.x
+- MySQL
+- Africa’s Talking & Safaricom credentials
 
-## Code of Conduct
+### 🛠 Installation
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+# Step into your Laragon www directory
+cd C:\laragon\www
 
-## Security Vulnerabilities
+# Create Laravel project
+composer create-project laravel/laravel agrisoko
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# OR if cloning
+git clone https://github.com/your-repo/agrisoko.git
+cd agrisoko
+composer install
 
-## License
+# Environment config
+cp .env.example .env
+php artisan key:generate
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Create the database (via phpMyAdmin)
+# Then edit .env to match DB name
+
+php artisan migrate
+php artisan serve
+```
+
+---
+
+## 🔐 Environment Variables (.env)
+
+```env
+APP_NAME=AgriSoko
+APP_URL=http://agrisoko.test
+
+DB_DATABASE=agrisoko
+DB_USERNAME=root
+DB_PASSWORD=
+
+AFRICASTALKING_USERNAME=your_username
+AFRICASTALKING_API_KEY=your_api_key
+
+MPESA_CONSUMER_KEY=your_consumer_key
+MPESA_CONSUMER_SECRET=your_consumer_secret
+MPESA_SHORTCODE=174379
+MPESA_PASSKEY=your_passkey
+```
+
+---
+
+## 📡 API Endpoints
+
+| Endpoint               | Method | Description               |
+|------------------------|--------|---------------------------|
+| `/api/ussd`            | POST   | USSD interactions         |
+| `/api/sms/send`        | POST   | Send SMS via AT           |
+| `/api/mpesa/stkpush`   | POST   | Initiate M-PESA STK push  |
+| `/api/admin/dashboard` | GET    | View loan statistics      |
+
+---
+
+## 📷 Screenshots
+
+>  interface or screenshots .
+
+---
+
+## 📖 License
+
+This project is open-source and free to use under the [MIT License](LICENSE).
+
+---
+
+## 🤝 Contribution & Ideas
+
+Feel free to fork, raise issues, or suggest new features! Let's empower farmers together 🚜🌍
+
+---
+
+## 🙏 Acknowledgments
+
+- [Africa's Talking](https://africastalking.com/)
+- [Safaricom Developer Portal](https://developer.safaricom.co.ke/)
+- [Laravel](https://laravel.com/)
