@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\USSDController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post('/ussd', [USSDController::class, 'handle']);
+Route::post('/send-sms', [USSDController::class, 'sendSMS']);
+
