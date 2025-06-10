@@ -60,4 +60,5 @@ class USSDController extends Controller
 
         return response($response)->header('Content-Type', 'text/plain');
     }
+
 }
