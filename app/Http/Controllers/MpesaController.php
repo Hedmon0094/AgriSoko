@@ -34,7 +34,7 @@ class MpesaController extends Controller
             'PartyB' => $shortcode,
             'PhoneNumber' => $phone,
             'CallBackURL' => $callbackUrl,
-            'AccountReference' => "M-FarmHub",
+            'AccountReference' => "AgriSoko",
             'TransactionDesc' => "Loan Application"
         ]);
 
